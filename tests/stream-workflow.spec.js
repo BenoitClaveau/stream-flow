@@ -1,5 +1,5 @@
 /*!
- * stream-flow
+ * stream-workflow
  * Copyright(c) 2019 Benoît Claveau <benoit.claveau@gmail.com>
  * MIT Licensed
  */
@@ -15,7 +15,7 @@ const {
 } = require('stream');
 const pipelineAsync = promisify(pipeline);
 
-describe("stream-flow", () => {
+describe("stream-workflow", () => {
 
     it("create a StreamFlow", async () => {
         const transform1 = new Transform({

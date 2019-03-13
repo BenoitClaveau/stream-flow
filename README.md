@@ -4,7 +4,7 @@ Encapsulate stream to use it in OOP.
 
  [![NPM][npm-image]][npm-url]
  [![Build Status][travis-image]][travis-url]
- [![Coverage Status](https://coveralls.io/repos/github/BenoitClaveau/stream-flow/badge.svg?branch=master)](https://coveralls.io/github/BenoitClaveau/stream-flow?branch=master)
+ [![Coverage Status](https://coveralls.io/repos/github/BenoitClaveau/stream-workflow/badge.svg?branch=master)](https://coveralls.io/github/BenoitClaveau/stream-workflow?branch=master)
  [![NPM Download][npm-image-download]][npm-url]
  [![Dependencies Status][david-dm-image]][david-dm-url]
 
@@ -27,7 +27,7 @@ Duplex --> Writable
 ```
 
 ```server.js
-const StreamFlow = require("stream-flow");
+const StreamFlow = require("stream-workflow");
 const { Transform, pipeline } = require("stream");
 const JSONStream = require("JSONStream");
 const fs = require("fs");
@@ -42,7 +42,7 @@ fs.createReadStream(`data.json`)
     }));
 
 /** 
-* With stream-flow
+* With stream-workflow
 * StreamFlow is a duplex stream
 */
 class CustomStream extends StreamFlow { {
@@ -70,22 +70,22 @@ fs.createReadStream(`data.json`)
 
 ## Test
 
-To run our tests, clone the stream-flow repo and install the dependencies.
+To run our tests, clone the stream-workflow repo and install the dependencies.
 
 ```bash
-$ git clone https://github.com/BenoitClaveau/stream-flow --depth 1
-$ cd stream-flow
+$ git clone https://github.com/BenoitClaveau/stream-workflow --depth 1
+$ cd stream-workflow
 $ npm install
 $ cd tests
 $ node.exe "../node_modules/mocha/bin/mocha" .
 ```
 
-[npm-image]: https://img.shields.io/npm/v/stream-flow.svg
-[npm-image-download]: https://img.shields.io/npm/dm/stream-flow.svg
-[npm-url]: https://npmjs.org/package/stream-flow
-[travis-image]: https://travis-ci.org/BenoitClaveau/stream-flow.svg?branch=master
-[travis-url]: https://travis-ci.org/BenoitClaveau/stream-flow
-[coveralls-image]: https://coveralls.io/repos/BenoitClaveau/stream-flow/badge.svg?branch=master&service=github
-[coveralls-url]: https://coveralls.io/github/BenoitClaveau/stream-flow?branch=master
-[david-dm-image]: https://david-dm.org/BenoitClaveau/stream-flow/status.svg
-[david-dm-url]: https://david-dm.org/BenoitClaveau/stream-flow
+[npm-image]: https://img.shields.io/npm/v/stream-workflow.svg
+[npm-image-download]: https://img.shields.io/npm/dm/stream-workflow.svg
+[npm-url]: https://npmjs.org/package/stream-workflow
+[travis-image]: https://travis-ci.org/BenoitClaveau/stream-workflow.svg?branch=master
+[travis-url]: https://travis-ci.org/BenoitClaveau/stream-workflow
+[coveralls-image]: https://coveralls.io/repos/BenoitClaveau/stream-workflow/badge.svg?branch=master&service=github
+[coveralls-url]: https://coveralls.io/github/BenoitClaveau/stream-workflow?branch=master
+[david-dm-image]: https://david-dm.org/BenoitClaveau/stream-workflow/status.svg
+[david-dm-url]: https://david-dm.org/BenoitClaveau/stream-workflow

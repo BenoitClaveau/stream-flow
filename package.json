@@ -1,5 +1,5 @@
 {
-    "name": "stream-flow",
+    "name": "stream-workflow",
     "version": "1.0.0",
     "description": "Use stream in OOP",
     "main": "index.js",
