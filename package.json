@@ -1,11 +1,11 @@
 {
     "name": "stream-workflow",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Use stream in OOP",
     "main": "index.js",
     "dependencies": {
-        "end-of-stream": "lates",
-        "uuid": "lates"
+        "end-of-stream": "latest",
+        "uuid": "latest"
     },
     "devDependencies": {
         "JSONStream": "latest",
