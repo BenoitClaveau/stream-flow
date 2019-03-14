@@ -1,7 +1,7 @@
 {
     "name": "stream-workflow",
-    "version": "1.0.2",
-    "description": "Use stream in OOP",
+    "version": "1.0.3",
+    "description": "Encapsulate streams for use in object-oriented programming.",
     "main": "index.js",
     "dependencies": {
         "end-of-stream": "latest",
@@ -21,7 +21,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/BenoitClaveau/damless.git"
+        "url": "https://github.com/BenoitClaveau/stream-workflow.git"
     },
     "keywords": [
         "stream",
@@ -36,9 +36,9 @@
     },
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/BenoitClaveau/damless/issues"
+        "url": "https://github.com/BenoitClaveau/stream-workflow/issues"
     },
-    "homepage": "https://github.com/BenoitClaveau/damless",
+    "homepage": "https://github.com/BenoitClaveau/stream-workflow",
     "nyc": {
         "include": [
             "lib/**/*.js"

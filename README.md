@@ -1,6 +1,6 @@
 # StreamFlow
 
-Encapsulate stream to use it in OOP.
+Encapsulate streams for use in object-oriented programming.
 
  [![NPM][npm-image]][npm-url]
  [![Build Status][travis-image]][travis-url]
@@ -8,25 +8,12 @@ Encapsulate stream to use it in OOP.
  [![NPM Download][npm-image-download]][npm-url]
  [![Dependencies Status][david-dm-image]][david-dm-url]
 
-```mermaid
-graph TD
-Readable --> Transform1[Transform 1] 
-Transform1 --> Transform2[Transform 2] 
-Transform2 --> Writable
-```
+Replace transform stream
 
-```mermaid
-graph TD
-Readable --> Duplex
-subgraph StreamFlow
-Duplex -.init.-> Transform1[Transform 1] 
-Transform1 -.-> Transform2[Transform 2]
-Transform2 -.-> Duplex
-end
-Duplex --> Writable
-```
+![Alt text](https://raw.github.com/BenoitClaveau/stream-workflow/master/specs/classic.png)
+<img src="https://raw.github.com/BenoitClaveau/stream-workflow/master/specs/classic.png">
 
-```server.js
+```transform.js
 const StreamFlow = require("stream-workflow");
 const { Transform, pipeline } = require("stream");
 const JSONStream = require("JSONStream");
@@ -40,19 +27,22 @@ fs.createReadStream(`data.json`)
             cb(null, chunk);
         }
     }));
+```
 
-/** 
-* With stream-workflow
-* StreamFlow is a duplex stream
-*/
+by stream-workflow
+
+![Alt text](https://raw.github.com/BenoitClaveau/stream-workflow/master/specs/workflow.png)
+<img src="https://raw.github.com/BenoitClaveau/stream-workflow/master/specs/workflow.png">
+
+```stream-worflow.js
 class CustomStream extends StreamFlow { {
     constructor({
         objectMode: true,
-        init(stream) {          // init must return a stream
-            return pipeline(    // create your own flow
-                stream,         // input stream
-                JSONStream.parse(),
-                new Transform({
+        init(stream) {              // init must return a stream
+            return pipeline(        // create your stream workflow
+                stream,             // input stream
+                JSONStream.parse(), // Transform 1 in diagram
+                new Transform({     // Transform 2 in diagram
                     objectMode: true,
                     transform(chunk, enc, cb) {
                         cb(null, chunk);
