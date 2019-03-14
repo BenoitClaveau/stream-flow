@@ -10,8 +10,7 @@ Encapsulate streams for use in object-oriented programming.
 
 Replace transform stream
 
-![Alt text](https://raw.github.com/BenoitClaveau/stream-workflow/master/specs/classic.png)
-<img src="https://raw.github.com/BenoitClaveau/stream-workflow/master/specs/classic.png">
+![Transform stream](https://raw.github.com/BenoitClaveau/stream-workflow/master/specs/classic.png)
 
 ```transform.js
 const StreamFlow = require("stream-workflow");
@@ -31,8 +30,7 @@ fs.createReadStream(`data.json`)
 
 by stream-workflow
 
-![Alt text](https://raw.github.com/BenoitClaveau/stream-workflow/master/specs/workflow.png)
-<img src="https://raw.github.com/BenoitClaveau/stream-workflow/master/specs/workflow.png">
+![StreamWorkflow](https://raw.github.com/BenoitClaveau/stream-workflow/master/specs/workflow.png)
 
 ```stream-worflow.js
 class CustomStream extends StreamFlow { {
