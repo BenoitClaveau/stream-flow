@@ -36,9 +36,9 @@ by stream-workflow
 class CustomStream extends StreamFlow { {
     constructor({
         objectMode: true,
-        init(stream) {              // init must return a stream
-            return pipeline(        // create your stream workflow
-                stream,             // input stream
+        init(stream) {              // init function must return the last stream of the pipeline.
+            return pipeline(        
+                stream,             // pathtrought stream
                 JSONStream.parse(), // Transform 1 in diagram
                 new Transform({     // Transform 2 in diagram
                     objectMode: true,
