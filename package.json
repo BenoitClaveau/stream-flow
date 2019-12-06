@@ -1,6 +1,6 @@
 {
     "name": "stream-workflow",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "Encapsulate streams for use in object-oriented programming.",
     "main": "index.js",
     "dependencies": {
