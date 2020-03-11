@@ -12,13 +12,15 @@
             "args": [
                 "--color",
                 "--recursive",
+                // "--grep",
+                // "throw an error in a StreamFlow pipeline first",
                 "${workspaceRoot}/tests/**/*.spec.js"
             ],
             "cwd": "${workspaceRoot}",
             "skipFiles": [
-                "<node_internals>/**/*.js",
-                "${workspaceFolder}/node_modules/core-js/**/*.js",
-                "${workspaceFolder}/node_modules/object.assign/**/*.js",
+                // "<node_internals>/**/*.js",
+                // "${workspaceFolder}/node_modules/core-js/**/*.js",
+                // "${workspaceFolder}/node_modules/object.assign/**/*.js",
             ]
           }
     ]

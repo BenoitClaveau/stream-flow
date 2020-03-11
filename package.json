@@ -1,12 +1,11 @@
 {
     "name": "stream-workflow",
-    "version": "1.0.9",
+    "version": "1.0.11",
     "description": "Encapsulate streams for use in object-oriented programming.",
     "main": "index.js",
     "dependencies": {
         "end-of-stream": "latest",
-        "oups": "latest",
-        "uuid": "latest"
+        "oups": "latest"
     },
     "devDependencies": {
         "JSONStream": "latest",

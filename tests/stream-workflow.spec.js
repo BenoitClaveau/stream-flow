@@ -11,8 +11,11 @@ const JSONStream = require("JSONStream");
 const {
     Readable,
     Transform,
+    PassThrough,
     pipeline
 } = require('stream');
+
+
 const pipelineAsync = promisify(pipeline);
 
 describe("stream-workflow", () => {
@@ -64,19 +67,19 @@ describe("stream-workflow", () => {
                     cb(null, chunk);
                 }
             })
-            .on("data", data => {
-                cpt++;
-                buffer.push(data);
-                //console.log(data.key);
-                if (cpt == 100) {
-                    //console.log("** PAUSE **");
-                    transform1.pause();
-                    setTimeout(() => {
-                        //console.log("** RESUME **");
-                        transform1.resume();
-                    }, 2000);
-                }
-            })
+                .on("data", data => {
+                    cpt++;
+                    buffer.push(data);
+                    console.log(data.key);
+                    if (cpt == 100) {
+                        console.log("** PAUSE **");
+                        transform1.pause();
+                        setTimeout(() => {
+                            console.log("** RESUME **");
+                            transform1.resume();
+                        }, 2000);
+                    }
+                })
         )
         expect(buffer.length).to.be(4028);
         expect(buffer[1]).to.eql({
@@ -119,7 +122,11 @@ describe("stream-workflow", () => {
         });
 
         try {
-            await pipelineAsync(stream, flow);
+            await pipelineAsync(
+                stream, 
+                flow,
+                new PassThrough({ objectMode: true }), // HACK https://github.com/nodejs/node/commit/4d93e105bfad79ff6c6f01e4b7c2fdd70caeb43b
+            );
             throw new Error();
         }
         catch (error) {
@@ -162,7 +169,11 @@ describe("stream-workflow", () => {
         });
 
         try {
-            await pipelineAsync(stream, flow);
+            await pipelineAsync(
+                stream, 
+                flow,
+                new PassThrough({ objectMode: true }), // HACK https://github.com/nodejs/node/commit/4d93e105bfad79ff6c6f01e4b7c2fdd70caeb43b
+            );
             throw new Error();
         }
         catch (error) {
@@ -183,8 +194,9 @@ describe("stream-workflow", () => {
                             if (chunk == "pipes inside")
                                 callback(new Error("Test"))
                             else callback(null, chunk.toUpperCase());
-                        }
+                        },
                     }),
+                    new PassThrough({ objectMode: true }), // HACK https://github.com/nodejs/node/commit/4d93e105bfad79ff6c6f01e4b7c2fdd70caeb43b
                     error => {
                         if (error) this.emit("error", error);
                     }
@@ -193,7 +205,11 @@ describe("stream-workflow", () => {
         });
 
         try {
-            await pipelineAsync(stream, flow);
+            await pipelineAsync(
+                stream,
+                flow,
+                new PassThrough({ objectMode: true }), // HACK https://github.com/nodejs/node/commit/4d93e105bfad79ff6c6f01e4b7c2fdd70caeb43b
+            );
             throw new Error();
         }
         catch (error) {
@@ -230,7 +246,11 @@ describe("stream-workflow", () => {
         });
 
         try {
-            await pipelineAsync(stream, flow);
+            await pipelineAsync(
+                stream, 
+                flow,
+                new PassThrough({ objectMode: true }), // HACK https://github.com/nodejs/node/commit/4d93e105bfad79ff6c6f01e4b7c2fdd70caeb43b
+            );
             throw new Error();
         }
         catch (error) {
