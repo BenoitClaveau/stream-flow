@@ -1,6 +1,6 @@
 # StreamFlow
 
-Encapsulate streams for use in object-oriented programming.
+Simplify your pipeline. Encapsulate your pipeline in a stream.
 
  [![NPM][npm-image]][npm-url]
  [![Build Status][travis-image]][travis-url]
@@ -8,16 +8,9 @@ Encapsulate streams for use in object-oriented programming.
  [![NPM Download][npm-image-download]][npm-url]
  [![Dependencies Status][david-dm-image]][david-dm-url]
 
-Replace transform stream
-
-![Transform stream](https://raw.github.com/BenoitClaveau/stream-workflow/master/specs/classic.png)
+Replace
 
 ```transform.js
-const StreamFlow = require("stream-workflow");
-const { Transform, pipeline } = require("stream");
-const JSONStream = require("JSONStream");
-const fs = require("fs");
-
 fs.createReadStream(`data.json`)
     .pipe(JSONStream.parse("*"))
     .pipe(new Transform({
@@ -28,15 +21,20 @@ fs.createReadStream(`data.json`)
     }));
 ```
 
-by stream-workflow
-
-![StreamWorkflow](https://raw.github.com/BenoitClaveau/stream-workflow/master/specs/workflow.png)
+With
 
 ```stream-worflow.js
-class CustomStream extends StreamFlow { {
+fs.createReadStream(`data.json`)
+    .pipe(new ComplexStream());
+```
+
+```complex-worflow.js
+class ComplexStream extends StreamFlow { {
     constructor({
         objectMode: true,
-        init(stream) {              // init function must return the last stream of the pipeline.
+        init(stream) {            
+            // Define your pipeline.
+            // init function must return the last stream of your pipeline.  
             return pipeline(        
                 stream,             // pathtrought stream
                 JSONStream.parse(), // Transform 1 in diagram
@@ -46,15 +44,19 @@ class CustomStream extends StreamFlow { {
                         cb(null, chunk);
                     }
                 }),
-                error => error && this.emit("error", error)
+                error => error && this.emit("error", error) // propagate error
             )
         }
     })
 }
-
-fs.createReadStream(`data.json`)
-    .pipe(new CustomStream());
 ```
+## Classic pipeline
+
+![Transform stream](https://raw.github.com/BenoitClaveau/stream-workflow/master/specs/classic.png)
+
+## Stream workflow pipeline
+
+![StreamWorkflow](https://raw.github.com/BenoitClaveau/stream-workflow/master/specs/workflow.png)
 
 ## Test
 
